@@ -10,6 +10,7 @@
         onclick="SignUpWorker_Click" />
           </div>
    </center>
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
 </asp:Content>
