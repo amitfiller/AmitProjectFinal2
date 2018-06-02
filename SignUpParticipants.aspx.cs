@@ -21,6 +21,7 @@ public partial class SignUpParticipants : System.Web.UI.Page
     protected void SignUp_Click(object sender, EventArgs e)
     {
 
+        //Gamit hoshev she hoo hahi hacham ba olam noder
         if (Page.IsValid == true)
         {
             message.Visible = false;
