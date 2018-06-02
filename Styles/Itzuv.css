@@ -1,0 +1,132 @@
+﻿
+body {
+    background-color: #FFFAFF;
+    font-family: Verdana;
+}
+
+h1 {
+    color: black;
+    font-family: Verdana;
+    font-size: 45px;
+    font-weight: normal;
+    line-height: 48px;
+    margin: 0;
+}
+
+h3 {
+    color: black;
+    font-family: Verdana; 
+    text-decoration: underline;
+    margin: 0;
+}
+
+#ContentPlaceHolder1_TimeTable {
+    border-spacing: 7px;
+}
+
+#ContentPlaceHolder1_TimeTable tr {
+    padding: 10px;
+}
+
+#ContentPlaceHolder1_TimeTable td {
+    background-color: #3dcbdb;
+    padding: 10px;
+    align-content:center;
+}
+
+.most_tables {
+    border-spacing: 7px;
+}
+
+.most_tables tr {
+        line-height: 30px;
+}
+
+.most_tables td {
+    height:20px;
+    align-content:center;
+    text-align:center; 
+}
+
+
+#login {
+    border-spacing: 30px;
+}
+
+#login td {
+    height:15px;
+    align-content:center;
+    text-align:center; 
+}
+
+.menu_buttons {
+    color: black;
+    font-family: Verdana;
+    text-decoration: none;
+    border: 1px solid #000;
+    padding: 10px;
+    transition: 0.3s;
+    border-radius: 20px;
+}
+
+.menu_buttons:hover {
+    background-color: #6d6a6a;
+    color: white;
+}
+
+
+.page_button {
+    color: black;
+    background-color: bisque;
+    text-decoration: none;
+    border: 1px solid #000;
+    padding: 10px;
+    transition: 0.3s;
+    border-radius: 20px;
+}
+
+.page_button:hover {
+        background-color: black;
+        color: white;
+ }
+
+.page_button:disabled {
+        background-color: darkgrey;
+        color: black;
+ }
+
+#HelloUser{
+     text-decoration: underline;
+     font-weight: bold;
+}
+
+input[type="text"], input[type="password"]{
+    height:100%;
+    width:100%;
+    background-color: #B0E0E6;
+    border: 0px;
+    border-radius: 5px;
+    font-family: raleway;
+    outline: none;
+}
+
+
+#ContentPlaceHolder2_Birthdate {
+    height:100%;
+    width:100%;
+    background-color: #B0E0E6;
+    border: 0px;
+    border-radius: 5px;
+    font-family: raleway;
+    outline: none;
+}
+
+select {
+    height:100%;
+    width:100%;
+    background-color: #B0E0E6;
+    border: 0px;
+    border-radius: 5px;
+    font-family: raleway;
+    outline: none;
+}

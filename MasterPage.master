@@ -1,0 +1,43 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <link href="Styles/Itzuv.css" rel="stylesheet" />
+
+</head>
+<body>
+    <form id="form1" runat="server">
+
+    <table style="align-content:center">
+        <tr>
+            <td><asp:HyperLink ID="Home" runat="server" NavigateUrl="~/CoverPage.aspx" Text="Home Page"><img src="Styles/9349HomeButton.png" style="height: 50px"/></asp:HyperLink></td>
+            <td><asp:HyperLink ID="signUp" CssClass="menu_buttons" runat="server" NavigateUrl="~/SignUpPossibilities.aspx" Text="Sign up"></asp:HyperLink></td>
+            <td><asp:HyperLink ID="logIn" CssClass="menu_buttons" runat="server" NavigateUrl="~/LogIn.aspx" Text="Login"></asp:HyperLink></td>
+            <td><asp:HyperLink ID="logout" CssClass="menu_buttons" runat="server" Text="Logout" NavigateUrl="~/Logout.aspx"></asp:HyperLink></td>
+            <td><asp:HyperLink ID="HyperLink1" CssClass="menu_buttons" runat="server" NavigateUrl="~/Contact.aspx" Text="Contact"></asp:HyperLink></td>
+            <td><asp:HyperLink ID="Timetable" CssClass="menu_buttons" runat="server" NavigateUrl="~/SetTimetable.aspx" Text="Add Course to Timetable" Visible="False"></asp:HyperLink></td>
+            <td><asp:HyperLink ID="SetGuideToCourse" CssClass="menu_buttons" runat="server" NavigateUrl="~/SetGuideToCourse.aspx" Text="Set guide to course" Visible="False"></asp:HyperLink></td>
+            <td><asp:HyperLink ID="AddCourseID" CssClass="menu_buttons" runat="server" NavigateUrl="~/AddCourse.aspx" Text="Add course" Visible="False"></asp:HyperLink></td>
+            <td><asp:HyperLink ID="AddRoomID" CssClass="menu_buttons" runat="server" NavigateUrl="~/AddRoom.aspx" Text="Add Room" Visible="False"></asp:HyperLink></td> 
+            <td><asp:HyperLink ID="StudentRegistration" CssClass="menu_buttons" runat="server" NavigateUrl="~/StudentPage.aspx" Text="Student Registration" Visible="False"></asp:HyperLink></td>
+            <td><asp:HyperLink ID="GuidePage" CssClass="menu_buttons" runat="server" NavigateUrl="~/GuidesPage.aspx" Text="Guide area" Visible="False"></asp:HyperLink></td>
+            <td></td><td></td>
+            <td><asp:Label ID="HelloUser" runat="server" Visible="False"></asp:Label></td>
+        </tr>
+    </table>
+         <center>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+            </asp:ContentPlaceHolder>
+         </center>
+        
+    </form>
+</body>
+</html>
