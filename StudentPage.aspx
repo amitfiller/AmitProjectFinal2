@@ -10,7 +10,7 @@
    <div>
         <asp:GridView ID="StudentCoursesGridView" runat="server" AllowPaging="True" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnPageIndexChanging="StudentCoursesGridView_PageIndexChanging" PageSize="3" OnRowDeleting="StudentCoursesGridView_RowDeleting">
             <Columns>
-                <asp:CommandField DeleteText="Remove" ShowDeleteButton="True" />
+                <asp:CommandField DeleteText="Leave Course" ShowDeleteButton="True" />
             </Columns>
             <FooterStyle BackColor="#CCCCCC" />
             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" font-names="Verdana"/>

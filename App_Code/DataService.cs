@@ -257,10 +257,11 @@ public class DataService
         return exist;
     }
 
-    public bool IsGuideExist(string email, string password, out string userName) // פעולה הבודקת האם מדריך קיים במתנ"ס
+    public bool IsGuideExist(string email, string password, out string userName, out int guideCode) // פעולה הבודקת האם מדריך קיים במתנ"ס
     {
         bool exist = false;
         userName = "";
+        guideCode = -1;
         string passHash = CalculateMD5Hash(password);
         string sql = "SELECT Guides.GuideCode, FirstName, LastName FROM Guides WHERE (Guides.email = '" + email + "' AND Guides.passHash = '" + passHash + "')";
 
@@ -270,6 +271,7 @@ public class DataService
             if (reader.Read())
             {
                 exist = true;
+                guideCode = reader.GetInt32(0);
                 userName = reader.GetString(1) + " " + reader.GetString(2);
             }
 

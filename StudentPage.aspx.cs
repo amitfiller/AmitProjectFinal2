@@ -30,7 +30,7 @@ public partial class ParticipantsPage : System.Web.UI.Page
 
         AccessDataSource DS = new AccessDataSource();
         DS.DataFile = "~/App_Data/Matnas_Database.accdb";
-        DS.SelectCommand = @"SELECT TimeTable.CourseTimeCode, Courses.CourseName, Guides.FirstName, Guides.LastName, Rooms.RoomName, WorkingHours.HourName, WorkingDays.Name
+        DS.SelectCommand = @"SELECT TimeTable.CourseTimeCode, Courses.CourseName, Guides.FirstName + ' ' + Guides.LastName As GuideName, Rooms.RoomName, WorkingDays.Name, WorkingHours.HourName
                             FROM (((((((Courses INNER JOIN
                          GuidesInCourses ON Courses.CourseCode = GuidesInCourses.CourseCode) INNER JOIN
                          Guides ON GuidesInCourses.GuideCode = Guides.GuideCode) INNER JOIN
@@ -51,7 +51,16 @@ public partial class ParticipantsPage : System.Web.UI.Page
 
         for (int i = 0; i < StudentCoursesGridView.Rows.Count; ++i)
         {
-            StudentCoursesGridView.Rows[i].Cells[1].Visible = false;
+            StudentCoursesGridView.Rows[i].Cells[1].Visible = false;            
+        }
+
+        if (StudentCoursesGridView.Rows.Count > 0)
+        {
+            StudentCoursesGridView.HeaderRow.Cells[2].Text = "Course Name";
+            StudentCoursesGridView.HeaderRow.Cells[3].Text = "Guide Name";
+            StudentCoursesGridView.HeaderRow.Cells[4].Text = "Room name";
+            StudentCoursesGridView.HeaderRow.Cells[5].Text = "Day";
+            StudentCoursesGridView.HeaderRow.Cells[6].Text = "Hour";           
         }
     }
 

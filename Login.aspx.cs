@@ -22,6 +22,7 @@ public partial class _Default : System.Web.UI.Page
             string loginType = LogInTypesID.SelectedItem.Value.ToString();
             string userName = "";
             int studentCode = -1;
+            int guideCode = -1;
             if (loginType == "AdminCode")
             {
                 if(d.IsAdminExist(EmailTextBox.Text, PasswordTextBox.Text, out userName))
@@ -39,10 +40,11 @@ public partial class _Default : System.Web.UI.Page
             }
             else if (loginType == "GuideCode")
             {
-                if (d.IsGuideExist(EmailTextBox.Text, PasswordTextBox.Text, out userName))
+                if (d.IsGuideExist(EmailTextBox.Text, PasswordTextBox.Text, out userName, out guideCode))
                 {
                     Session["UserLoggedIn"] = userName;
                     Session["loginType"] = loginType;
+                    Session["LoggedInGuideCode"] = guideCode;
                     Server.Transfer("CoverPage.aspx");
                 }
                 else

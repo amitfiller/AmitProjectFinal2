@@ -26,7 +26,8 @@ public partial class JoinCourse : System.Web.UI.Page
     
     public void BindCourseGridView()
     {
-        string selectedCoursesCodes = String.Join(",", (HashSet<int>)Session["SelectedCourseTimeCode"]);
+        /// 
+        string selectedCoursesCodes = string.Join(",", (HashSet<int>)Session["SelectedCourseTimeCode"]);
         if (string.IsNullOrEmpty(selectedCoursesCodes))
         {
             selectedCoursesCodes = "-1";
@@ -38,7 +39,10 @@ public partial class JoinCourse : System.Web.UI.Page
         else
         {
             CurrencyDropDown.Visible = true;
-            ContToPayID.Visible = true;
+
+            if (PayBtnID.Visible == false)
+                ContToPayID.Visible = true;
+
             totalPriceLabel.Visible = true;
             totalPriceText.Visible = true;
         }
@@ -59,7 +63,7 @@ public partial class JoinCourse : System.Web.UI.Page
         if (AddedCoursesGridView.Rows.Count > 0)
         {
             AddedCoursesGridView.HeaderRow.Cells[1].Visible = false;
-            AddedCoursesGridView.HeaderRow.Cells[2].Text = "Cource Name";
+            AddedCoursesGridView.HeaderRow.Cells[2].Text = "Course Name";
             AddedCoursesGridView.HeaderRow.Cells[3].Text = "Guide Name";
             AddedCoursesGridView.HeaderRow.Cells[4].Text = "Day";
             AddedCoursesGridView.HeaderRow.Cells[5].Text = "Hour";
@@ -172,7 +176,6 @@ public partial class JoinCourse : System.Web.UI.Page
 
     protected void ContinueToPayment(object sender, EventArgs e)
     {
-        ///Server.Transfer("Pay.aspx");
         ChooseCourseID.Visible = false;
         CourseNameID.Visible = false;
         ChooseGuideID.Visible = false;
