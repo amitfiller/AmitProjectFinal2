@@ -42,7 +42,7 @@ public partial class WorkersPage : System.Web.UI.Page
             GridViewGuides.HeaderRow.Cells[0].Text = "Course Name";
             GridViewGuides.HeaderRow.Cells[1].Text = "Room name";
             GridViewGuides.HeaderRow.Cells[2].Text = "Day";
-            GridViewGuides.HeaderRow.Cells[3].Text = "Hour";
+            GridViewGuides.HeaderRow.Cells[3].Text = "Hour"; 
 
         }
 
