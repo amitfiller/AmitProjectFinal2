@@ -60,7 +60,7 @@ public partial class ParticipantsPage : System.Web.UI.Page
             StudentCoursesGridView.HeaderRow.Cells[3].Text = "Guide Name";
             StudentCoursesGridView.HeaderRow.Cells[4].Text = "Room name";
             StudentCoursesGridView.HeaderRow.Cells[5].Text = "Day";
-            StudentCoursesGridView.HeaderRow.Cells[6].Text = "Hour";              
+            StudentCoursesGridView.HeaderRow.Cells[6].Text = "Hour";         
         }
     }
 

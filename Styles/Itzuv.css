@@ -20,18 +20,18 @@ h3 {
     margin: 0;
 }
 
-#ContentPlaceHolder1_TimeTable {
-    border-spacing: 7px;
+#ContentPlaceHolder1_AddedCoursesGridView, #ContentPlaceHolder1_TimeTable, #ContentPlaceHolder2_StudentCoursesGridView, #ContentPlaceHolder1_GridViewGuides {
+    border-spacing: 7px !important;
 }
 
-#ContentPlaceHolder1_TimeTable tr {
-    padding: 10px;
+ContentPlaceHolder1_AddedCoursesGridView tr, #ContentPlaceHolder1_TimeTable tr, #ContentPlaceHolder2_StudentCoursesGridView tr, #ContentPlaceHolder1_GridViewGuides tr {
+    padding: 10px !important;
 }
 
-#ContentPlaceHolder1_TimeTable td {
-    background-color: #3dcbdb;
-    padding: 10px;
-    align-content:center;
+#ContentPlaceHolder1_AddedCoursesGridView td, #ContentPlaceHolder1_AddedCoursesGridView th, #ContentPlaceHolder1_TimeTable td, #ContentPlaceHolder2_StudentCoursesGridView td,  #ContentPlaceHolder2_StudentCoursesGridView th, #ContentPlaceHolder1_GridViewGuides td, #ContentPlaceHolder1_GridViewGuides th {
+    background-color: #3dcbdb !important;
+    padding: 10px !important;
+    align-content:center !important;
 }
 
 .most_tables {

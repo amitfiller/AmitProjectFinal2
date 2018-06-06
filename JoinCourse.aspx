@@ -4,10 +4,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div>
-        <table class="most_tables">
+        <table class="most_tables" style=" border-spacing: 15px">
             <tr>
                 <td>
                     <asp:Label ID="ChooseCourseID" runat="server" Text="Choose Course:"></asp:Label>
+                    <br />
                 </td>
                 <td>
                     <asp:DropDownList ID="CourseNameID" runat="server" DataSourceID="CourseNames_DS" DataTextField="CourseName" DataValueField="CourseCode"
@@ -16,11 +17,13 @@
                         <asp:ListItem Value="-1">-- Select one option --</asp:ListItem>
                     </asp:DropDownList>
                     <asp:AccessDataSource ID="CourseNames_DS" runat="server" DataFile="~/App_Data/Matnas_Database.accdb" SelectCommand="SELECT [CourseName], [CourseCode] FROM [TimeTableCourseNameView]"></asp:AccessDataSource>
+                    <br />
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="ChooseGuideID" runat="server" Text="Choose Guide:"></asp:Label>
+                    <br />
                 </td>
                 <td>
                     <asp:DropDownList ID="GuideNameID" runat="server"
@@ -28,42 +31,40 @@
                         AppendDataBoundItems="true" Enabled="False" AutoPostBack="True">
                         <asp:ListItem Value="-1">-- Select one option --</asp:ListItem>
                     </asp:DropDownList>
+                    <br />
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="ChooseTime" runat="server" Text="Choose Time:"></asp:Label>
+                    <br />
                 </td>
                 <td>
                     <asp:DropDownList ID="CourseTimeID" runat="server"
                         AppendDataBoundItems="true" Enabled="False" AutoPostBack="True">
                         <asp:ListItem Value="-1">-- Select one option --</asp:ListItem>
                     </asp:DropDownList>
+                    <br />
                 </td>
             </tr>
         </table>
     </div>
     <div>
+        <br />
         <asp:Button CssClass="page_button" ID="JoinId" runat="server" OnClick="Join_Click" Text="Add" Enabled="False" />
     </div>
 
     <div>
-        <asp:GridView ID="AddedCoursesGridView" runat="server" AllowPaging="True" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnPageIndexChanging="AddedCoursesGridView_PageIndexChanging" PageSize="3" OnRowDeleting="AddedCoursesGridView_RowDeleting">
+        <br />
+        <asp:GridView ID="AddedCoursesGridView" runat="server" AllowPaging="True" OnRowDeleting="AddedCoursesGridView_RowDeleting">
             <Columns>
                 <asp:CommandField DeleteText="Remove" ShowDeleteButton="True" />
             </Columns>
-            <FooterStyle BackColor="#CCCCCC" />
-            <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" Font-Names="Verdana" />
-            <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
-            <RowStyle BackColor="White" />
-            <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
-            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-            <SortedAscendingHeaderStyle BackColor="Gray" />
-            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-            <SortedDescendingHeaderStyle BackColor="#383838" />
+            
         </asp:GridView>
     </div>
 
+    <br />
     <table>
         <tr>
             <td>
@@ -71,6 +72,7 @@
                     Text="Continue To Payment" Visible="False" />
             </td>
             <td>
+           
                 <asp:Label ID="totalPriceLabel" runat="server" Text="Total Price:" Visible="False"></asp:Label></td>
             <td>
                 <asp:Label ID="totalPriceText" runat="server" Text="0.0" Visible="False"></asp:Label></td>
