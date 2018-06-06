@@ -25,8 +25,8 @@
             <td><asp:HyperLink ID="SetGuideToCourse" CssClass="menu_buttons" runat="server" NavigateUrl="~/SetGuideToCourse.aspx" Text="Set guide to course" Visible="False"></asp:HyperLink></td>
             <td><asp:HyperLink ID="AddCourseID" CssClass="menu_buttons" runat="server" NavigateUrl="~/AddCourse.aspx" Text="Add course" Visible="False"></asp:HyperLink></td>
             <td><asp:HyperLink ID="AddRoomID" CssClass="menu_buttons" runat="server" NavigateUrl="~/AddRoom.aspx" Text="Add Room" Visible="False"></asp:HyperLink></td> 
-            <td><asp:HyperLink ID="StudentRegistration" CssClass="menu_buttons" runat="server" NavigateUrl="~/StudentPage.aspx" Text="Student Registration" Visible="False"></asp:HyperLink></td>
-            <td><asp:HyperLink ID="GuidePage" CssClass="menu_buttons" runat="server" NavigateUrl="~/GuidesPage.aspx" Text="Guide area" Visible="False"></asp:HyperLink></td>
+            <td><asp:HyperLink ID="StudentRegistration" CssClass="menu_buttons" runat="server" NavigateUrl="~/StudentPage.aspx" Text="Student Personal Zone" Visible="False"></asp:HyperLink></td>
+            <td><asp:HyperLink ID="GuidePage" CssClass="menu_buttons" runat="server" NavigateUrl="~/GuidesPage.aspx" Text="Guide Personal Zone" Visible="False"></asp:HyperLink></td>
             <td></td><td></td>
             <td><asp:Label ID="HelloUser" runat="server" Visible="False"></asp:Label></td>
         </tr>

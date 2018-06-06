@@ -49,7 +49,7 @@
     </table>
     <br />
     <center>
-        <asp:Button ID="Button1" CssClass="page_button"  runat="server" OnClick="createTimeTable_Click" Text="Create Time Table" />
+        <asp:Button ID="Button1" CssClass="page_button"  runat="server" OnClick="createTimeTable_Click" Text="Add to Time Table" />
     </center>
 
 

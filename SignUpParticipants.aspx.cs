@@ -19,16 +19,14 @@ public partial class SignUpParticipants : System.Web.UI.Page
         
    
     protected void SignUp_Click(object sender, EventArgs e)
-    {
-        //GAGAGAG 
-        //Gamit hoshev she hoo hahi hacham ba olam noder  
+    {         
         if (Page.IsValid == true)
         {
             message.Visible = false;
             if (PassTextBox.Text == ReTypeTextBox.Text)
             {
                 DataService d = new DataService();
-                if (d.NoUsernameStudent(email.Text))
+                if (!d.IsStudentExist(email.Text))
                 {
                     d.EnterDetailsStudent(IDNumber.Text, FirstName.Text, LastName.Text, Birthdate.Text, Gender.SelectedItem.Text, Cellphone.Text, Address.Text, email.Text, PassTextBox.Text);                               
                     Server.Transfer("Login.aspx");

@@ -65,7 +65,7 @@ public partial class JoinCourse : System.Web.UI.Page
             AddedCoursesGridView.HeaderRow.Cells[5].Text = "Hour";
             AddedCoursesGridView.HeaderRow.Cells[6].Text = "Price";
         }     
-
+        //הפעלת שירות רשת חיצוני - המרה משקל לדולר/הפוך
         ConverterSoapClient moneyConv = new ConverterSoapClient("ConverterSoap");
         
         CultureInfo info = new CultureInfo(CurrencyDropDown.SelectedItem.Value);
@@ -289,29 +289,39 @@ public partial class JoinCourse : System.Web.UI.Page
                 deb.CardOwnerId = TextBoxIDNumber.Text;
                 deb.ExpMonth = int.Parse(DropDownListMonth.SelectedItem.Value);
                 deb.ExpYear = int.Parse(DropDownListYear.SelectedItem.Value);
-
-                string status = "OK";
-             //   string status = card.DebitCreditCard(deb);
+                             
+                string status = card.DebitCreditCard(deb);
                 if (status == "OK")
                 {
                     MessageID.Visible = false;
 
                     int studentCode = -1;
-                    if(Session["LoggedInStudentCode"] != null);
+                    if(Session["LoggedInStudentCode"] != null)
                         studentCode = (int)Session["LoggedInStudentCode"];
 
                     if (studentCode > -1)
                     {
-                        DataService d = new DataService();
-
-                        // we have confirmation for the payment so add the student coureces .
-                        for (int i = 0; i < AddedCoursesGridView.Rows.Count; ++i)
+                        try
                         {
-                            int corseTimeCode = int.Parse(AddedCoursesGridView.Rows[i].Cells[1].Text);
-                            d.AddStudentToCourse(studentCode.ToString(), corseTimeCode.ToString());
-                        }
+                            DataService d = new DataService();
 
-                        Server.Transfer("StudentPage.aspx");
+                            // we have confirmation for the payment so add the student coureces .
+                            for (int i = 0; i < AddedCoursesGridView.Rows.Count; ++i)
+                            {
+                                int courseTimeCode = int.Parse(AddedCoursesGridView.Rows[i].Cells[1].Text);
+                                d.AddStudentToCourse(studentCode.ToString(), courseTimeCode.ToString());
+
+                                ((HashSet<int>)Session["SelectedCourseTimeCode"]).Remove(courseTimeCode);
+                            }
+
+                            Server.Transfer("StudentPage.aspx");
+                        }
+                        catch(Exception)
+                        {
+                            MessageID.Visible = true;
+                            MessageID.Text = "Failed to add the student to the course(s)";
+                            MessageID.ForeColor = System.Drawing.Color.OrangeRed;
+                        }
                     }
                     else
                     {

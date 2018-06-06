@@ -25,12 +25,12 @@ public partial class ParticipantsPage : System.Web.UI.Page
     public void BindStudentCourseGridView()
     {
         int studentCode = -1;
-        if (Session["LoggedInStudentCode"] != null) ;
+        if (Session["LoggedInStudentCode"] != null)
             studentCode = (int)Session["LoggedInStudentCode"];
 
         AccessDataSource DS = new AccessDataSource();
         DS.DataFile = "~/App_Data/Matnas_Database.accdb";
-        DS.SelectCommand = @"SELECT Courses.CourseName, Guides.FirstName, Guides.LastName, Rooms.RoomName, WorkingHours.HourName, WorkingDays.Name
+        DS.SelectCommand = @"SELECT TimeTable.CourseTimeCode, Courses.CourseName, Guides.FirstName, Guides.LastName, Rooms.RoomName, WorkingHours.HourName, WorkingDays.Name
                             FROM (((((((Courses INNER JOIN
                          GuidesInCourses ON Courses.CourseCode = GuidesInCourses.CourseCode) INNER JOIN
                          Guides ON GuidesInCourses.GuideCode = Guides.GuideCode) INNER JOIN
@@ -43,6 +43,16 @@ public partial class ParticipantsPage : System.Web.UI.Page
 
         StudentCoursesGridView.DataSource = DS;
         StudentCoursesGridView.DataBind();
+
+        if (StudentCoursesGridView.Rows.Count > 0)
+        {
+            StudentCoursesGridView.HeaderRow.Cells[1].Visible = false;
+        }
+
+        for (int i = 0; i < StudentCoursesGridView.Rows.Count; ++i)
+        {
+            StudentCoursesGridView.Rows[i].Cells[1].Visible = false;
+        }
     }
 
     protected void StudentCoursesGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -53,11 +63,19 @@ public partial class ParticipantsPage : System.Web.UI.Page
 
     protected void StudentCoursesGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
+        GridViewRow row = StudentCoursesGridView.Rows[e.RowIndex];
+        int courseTimeCode = int.Parse(row.Cells[1].Text);
 
+        int studentCode = -1;
+        if (Session["LoggedInStudentCode"] != null)
+            studentCode = (int)Session["LoggedInStudentCode"];
+
+        if(studentCode != -1)
+        {
+            DataService d = new DataService();
+            d.RemoveStudentFromCourse(studentCode, courseTimeCode);
+            BindStudentCourseGridView();
+        }
     }
-
-    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
+    
 }

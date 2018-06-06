@@ -1,2 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Connect">
+    <Position X="6.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>App_Code\Connect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TimeTableRow">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAEAIAAAAAAAEAAAAAAAAEAAAAAAAAAACAAAAgAA=</HashCode>
+      <FileName>App_Code\TimeTableRow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Validator">
+    <Position X="9.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\Validator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataService">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AEAACAAAAQQDAwGABgIABBAAEQQAABYAQAIwAEAAAAQ=</HashCode>
+      <FileName>App_Code\DataService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

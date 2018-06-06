@@ -14,7 +14,7 @@
                     <asp:ListItem Value="AdminCode">Admin</asp:ListItem>
                 </asp:DropDownList>
             </td>
-        </tr>.
+        </tr>
 
         <tr>
             <td >Email: <br />

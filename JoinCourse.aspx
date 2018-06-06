@@ -1,16 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="JoinCourse.aspx.cs" Inherits="JoinCourse" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div>
         <table class="most_tables">
             <tr>
-                <td >
+                <td>
                     <asp:Label ID="ChooseCourseID" runat="server" Text="Choose Course:"></asp:Label>
                 </td>
-                <td >
+                <td>
                     <asp:DropDownList ID="CourseNameID" runat="server" DataSourceID="CourseNames_DS" DataTextField="CourseName" DataValueField="CourseCode"
                         OnSelectedIndexChanged="ChooseCourse_SelectedChanged"
                         AppendDataBoundItems="true" AutoPostBack="True">
@@ -20,10 +19,10 @@
                 </td>
             </tr>
             <tr>
-                <td >
+                <td>
                     <asp:Label ID="ChooseGuideID" runat="server" Text="Choose Guide:"></asp:Label>
                 </td>
-                <td >
+                <td>
                     <asp:DropDownList ID="GuideNameID" runat="server"
                         OnSelectedIndexChanged="ChooseGuide_SelectedChanged"
                         AppendDataBoundItems="true" Enabled="False" AutoPostBack="True">
@@ -32,10 +31,10 @@
                 </td>
             </tr>
             <tr>
-                <td >
+                <td>
                     <asp:Label ID="ChooseTime" runat="server" Text="Choose Time:"></asp:Label>
                 </td>
-                <td >
+                <td>
                     <asp:DropDownList ID="CourseTimeID" runat="server"
                         AppendDataBoundItems="true" Enabled="False" AutoPostBack="True">
                         <asp:ListItem Value="-1">-- Select one option --</asp:ListItem>
@@ -54,7 +53,7 @@
                 <asp:CommandField DeleteText="Remove" ShowDeleteButton="True" />
             </Columns>
             <FooterStyle BackColor="#CCCCCC" />
-            <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" font-names="Verdana"/>
+            <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" Font-Names="Verdana" />
             <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
             <RowStyle BackColor="White" />
             <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
@@ -62,23 +61,32 @@
             <SortedAscendingHeaderStyle BackColor="Gray" />
             <SortedDescendingCellStyle BackColor="#CAC9C9" />
             <SortedDescendingHeaderStyle BackColor="#383838" />
-        </asp:GridView>   
+        </asp:GridView>
     </div>
-    <asp:Button CssClass="page_button" ID="ContToPayID" runat="server" OnClick="ContinueToPayment" 
-        Text="Continue To Payment" Visible="False"/>
-    <asp:Label ID="totalPriceLabel" runat="server" Text="Total Price:" Visible="False"></asp:Label>
-    <asp:Label ID="totalPriceText" runat="server" Text="0.0" Visible="False"></asp:Label>
 
-    <asp:DropDownList ID="CurrencyDropDown" runat="server"
-        AutoPostBack="True" Visible="False" OnSelectedIndexChanged="CurrencyDropDown_SelectedIndexChanged">
-        <asp:ListItem Value="he-IL">NIS</asp:ListItem>
-        <asp:ListItem Value="en-US">USD</asp:ListItem>
-    </asp:DropDownList>
+    <table>
+        <tr>
+            <td>
+                <asp:Button CssClass="page_button" ID="ContToPayID" runat="server" OnClick="ContinueToPayment"
+                    Text="Continue To Payment" Visible="False" />
+            </td>
+            <td>
+                <asp:Label ID="totalPriceLabel" runat="server" Text="Total Price:" Visible="False"></asp:Label></td>
+            <td>
+                <asp:Label ID="totalPriceText" runat="server" Text="0.0" Visible="False"></asp:Label></td>
+            <td>
+                <asp:DropDownList ID="CurrencyDropDown" runat="server"
+                    AutoPostBack="True" Visible="False" OnSelectedIndexChanged="CurrencyDropDown_SelectedIndexChanged">
+                    <asp:ListItem Value="he-IL">NIS</asp:ListItem>
+                    <asp:ListItem Value="en-US">USD</asp:ListItem>
+                </asp:DropDownList></td>
+        </tr>
+    </table>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
-    <table >
-         <tr>
-            <td >
+    <table>
+        <tr>
+            <td>
                 <asp:Label ID="LabelCreditCardType" runat="server" Text="Credit card type:" Visible="False"></asp:Label>
             </td>
             <td>
@@ -90,32 +98,31 @@
                     <asp:ListItem>Isracard</asp:ListItem>
                 </asp:DropDownList>
             </td>
-            <td ></td>
+            <td></td>
         </tr>
         <tr>
-            <td >
+            <td>
                 <asp:Label ID="LabelCreditCardNum" runat="server" Text="Credit card number:" Visible="False"></asp:Label>
             </td>
-            <td >
+            <td>
                 <asp:TextBox ID="TextBoxCreditCardNum" runat="server" Height="16px" Visible="False" Width="125px"></asp:TextBox>
             </td>
-            <td >
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBoxCreditCardNum"  ErrorMessage="Card number must contains 16 digits" ValidationExpression="\d{16}" Visible="False">Must be 16 numbers!</asp:RegularExpressionValidator>
+            <td>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBoxCreditCardNum" ErrorMessage="Card number must contains 16 digits" ValidationExpression="\d{16}" Visible="False">Must be 16 numbers!</asp:RegularExpressionValidator>
             </td>
         </tr>
-       
+
         <tr>
-            <td >
+            <td>
                 <asp:Label ID="LabelIDNumber" runat="server" Text="ID number:" Visible="False"></asp:Label>
             </td>
             <td>
                 <asp:TextBox ID="TextBoxIDNumber" runat="server" Visible="False"></asp:TextBox>
             </td>
-            <td >               
-            </td>
+            <td></td>
         </tr>
         <tr>
-            <td >
+            <td>
                 <asp:Label ID="LabelMonthValidity" runat="server" Text="Month validity" Visible="False"></asp:Label>
             </td>
             <td>
@@ -135,25 +142,24 @@
                     <asp:ListItem Value="12">December</asp:ListItem>
                 </asp:DropDownList>
             </td>
-            <td ></td>
+            <td></td>
         </tr>
         <tr>
-            <td >
+            <td>
                 <asp:Label ID="LabelYearValidity" runat="server" Text="Year validity" Visible="False"></asp:Label>
             </td>
             <td>
-                <asp:DropDownList ID="DropDownListYear" runat="server" Visible="false">                   
+                <asp:DropDownList ID="DropDownListYear" runat="server" Visible="false">
                 </asp:DropDownList>
             </td>
-            <td ></td>
+            <td></td>
         </tr>
-          <tr><td>
-              <asp:Button CssClass="page_button" ID="PayBtnID" runat="server" OnClick="PayBtnID_Click" Text="Pay" Visible="False" />
-              <asp:Label ID="MessageID" runat="server" Visible="False"></asp:Label>
-              </td></tr>
-
+        <tr>
+            <td>
+                <asp:Button CssClass="page_button" ID="PayBtnID" runat="server" OnClick="PayBtnID_Click" Text="Pay" Visible="False" />
+            </td>
+        </tr>
     </table>
-
-
+    <asp:Label ID="MessageID" runat="server" Visible="False"></asp:Label>
 </asp:Content>
 

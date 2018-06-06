@@ -13,16 +13,21 @@ public partial class RankCourse : System.Web.UI.Page
 
     }
 
-    protected void CoursesList_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        DataService d = new DataService();
-        CourseDescription.Text = "Descroption: " + d.CourseDescriptionByCourseName(CoursesList.SelectedValue);
-        NumParticipants.Text = "Number of Participants: " + d.NumParticipants(CoursesList.SelectedValue);
-    }
+    //protected void CoursesList_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    DataService d = new DataService();
+    //    CourseDescription.Text = "Descroption: " + d.CourseDescriptionByCourseName(CoursesList.SelectedValue);
+    //    NumParticipants.Text = "Number of Participants: " + d.NumParticipants(CoursesList.SelectedValue);
+    //}
+
+    //protected void SaveRank_Click(object sender, EventArgs e)
+    //{
+    //    DataService d = new DataService();
+    //    int courseCode = d.CourseCodeByCourseName(CoursesList.SelectedValue);     
+    //}
 
     protected void SaveRank_Click(object sender, EventArgs e)
     {
-        DataService d = new DataService();
-        int courseCode = d.CourseCodeByCourseName(CoursesList.SelectedValue);     
+
     }
 }

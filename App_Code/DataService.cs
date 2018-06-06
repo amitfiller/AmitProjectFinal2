@@ -29,7 +29,7 @@ public class DataService
         return reader;
     }
 
-    public void AddCourse(string courseName, string price, string description, string roomType)
+    public void AddCourse(string courseName, string price, string description, string roomType) // הוספת חוג למתנ"ס
     {
         string query = "INSERT INTO Courses (CourseName, PricePerMonth, Description, RoomType) VALUES('" + courseName + "', '" + price + "', '" + description + "', '" + roomType + "')";
         OleDbCommand comm = new OleDbCommand(query, conn);
@@ -51,7 +51,7 @@ public class DataService
         }
     }
 
-    public void AddRoom(string roomName, string roomType)
+    public void AddRoom(string roomName, string roomType) // הוספת חדר למתנ"ס
     {
         string query = "INSERT INTO Rooms (RoomName, RoomType) VALUES('" + roomName + "', '" + roomType + "')";
         OleDbCommand comm = new OleDbCommand(query, conn);
@@ -73,7 +73,7 @@ public class DataService
         }
     }
 
-    public bool RoomNameNotExist(string roomName)
+    public bool RoomNameNotExist(string roomName) // בדיקה האם חדר קיים או לא
     {
         string query = "SELECT RoomCode FROM Rooms WHERE RoomName='" + roomName + "'";
         OleDbCommand comm = new OleDbCommand(query, conn);
@@ -98,7 +98,7 @@ public class DataService
         return (obj == null);
     }
 
-    public void SetGuideToCourse(string GuideCode, string CourseCode)
+    public void SetGuideToCourse(string GuideCode, string CourseCode) // שיוך בין מדריך לחוג עליו הוא ידריך
     {
         string query = "INSERT INTO GuidesInCourses (GuideCode, CourseCode) VALUES ('" + GuideCode + "','" + CourseCode + "')";
         OleDbCommand comm = new OleDbCommand(query, conn);
@@ -120,7 +120,7 @@ public class DataService
         }
     }
 
-    public void SetTimeTable(string GuideCourseCode, string RoomCode, string DayCode, string HourCode)
+    public void SetTimeTable(string GuideCourseCode, string RoomCode, string DayCode, string HourCode) // פעולה המעדכנת את מערכת השעות של המתנ"ס
     {
         string year = DateTime.Now.Year.ToString();
 
@@ -140,7 +140,7 @@ public class DataService
     }
 
 
-    public void EnterDetailsStudent(string idNumber, string firstName, string lastName, string birthDate, string gender, string cellphone, string address, string username, string password)
+    public void EnterDetailsStudent(string idNumber, string firstName, string lastName, string birthDate, string gender, string cellphone, string address, string username, string password) // הוספת תלמיד למתנ"ס
     {
         string passHash = CalculateMD5Hash(password);
         string query = "INSERT INTO Students (IDNumber, FirstName, LastName, BirthDate, Gender, Cellphone, Address, Email, PassHash) VALUES ('" + idNumber + "','" + firstName + "','" + lastName + "','" + birthDate + "','" + gender + "','" + cellphone + "','" + address + "','" + username + "','" + passHash + "')";
@@ -163,7 +163,7 @@ public class DataService
         }
     }
 
-    public bool NoUsernameStudent(string email)
+    public bool IsStudentExist(string email) // האם התלמיד קיים כשאתה נרשם למתנ"ס
     {
         string query = "SELECT StudentCode FROM Students WHERE email='" + email + "'";
         OleDbCommand comm = new OleDbCommand(query, conn);
@@ -185,35 +185,11 @@ public class DataService
             conn.Close();
         }
 
-        return (obj == null);
+        return (obj != null);
     }
+    
 
-    public bool NoPasswordParticipant(string password)
-    {
-        string sql = "SELECT * FROM Student WHERE (password = '" + password + "')";
-        OleDbCommand comm = new OleDbCommand(sql, conn);
-        object obj = null;
-
-        try
-        {
-            conn.Open();
-            obj = comm.ExecuteScalar();
-        }
-
-        catch (Exception ex)
-        {
-            throw ex;
-        }
-
-        finally
-        {
-            conn.Close();
-        }
-
-        return (obj == null);
-    }
-
-    public bool IsStudentExist(string email, string password, out string userName, out int studentCode)
+    public bool IsStudentExist(string email, string password, out string userName, out int studentCode) // האם התלמיד קיים כשאתה מתחבר
     {
         bool exist = false;
         userName = "";
@@ -248,7 +224,7 @@ public class DataService
         return exist;
     }
 
-    public bool IsAdminExist(string email, string password, out string userName)
+    public bool IsAdminExist(string email, string password, out string userName) // פעולה הבודקת האם האדמין קיים במערכת
     {
         bool exist = false;
         userName = "";
@@ -281,7 +257,7 @@ public class DataService
         return exist;
     }
 
-    public bool IsGuideExist(string email, string password, out string userName)
+    public bool IsGuideExist(string email, string password, out string userName) // פעולה הבודקת האם מדריך קיים במתנ"ס
     {
         bool exist = false;
         userName = "";
@@ -314,7 +290,7 @@ public class DataService
         return exist;
     }
 
-    public void InsertGuidsDetails(string firstName, string lastName, string idNumber, string birthDate, string cellphone, string address, string email, string pass)
+    public void InsertGuidsDetails(string firstName, string lastName, string idNumber, string birthDate, string cellphone, string address, string email, string pass) // פעולה המכניסה את פרטיו של המדריך למאגר נתונים במתנ"ס
     {
         string date = DateTime.Now.Day + " / " + DateTime.Now.Month + " / " + DateTime.Now.Year;
         string passHash = CalculateMD5Hash(pass);
@@ -337,7 +313,7 @@ public class DataService
         }
     }
 
-    public bool NoCodeWorkerTogetherWithEmail(string email)
+    public bool NoCodeWorkerTogetherWithEmail(string email) // פעולה הבודקת האם המדריך קיים כבר במתנ"ס
     {
         string sql = "SELECT Guides.GuideCode FROM Guides WHERE Guides.Email = '" + email + "'";
         OleDbCommand comm = new OleDbCommand(sql, conn);
@@ -360,37 +336,34 @@ public class DataService
 
         return (obj == null);
     }
-    
-    //public bool ParticipantsNotExistsInCourse(string participantCode, string courseName)
-    //{
-    //    string sql = "SELECT StudentInCourses.CaseCode FROM(Student INNER JOIN ParticipantsInCourses ON Participants.ParticipantCode = ParticipantsInCourses.ParticipantCode) INNER JOIN Courses ON ParticipantsInCourses.CourseCode = Courses.CourseCode WHERE(Participant.ParticipantCode = '" + participantCode + "' AND Courses.Name = '" + courseName + "')";
-
-    //    OleDbCommand comm = new OleDbCommand(sql, conn);
-    //    object obj = null;
-
-    //    try
-    //    {
-    //        conn.Open();
-    //        obj = comm.ExecuteScalar();
-    //    }
-
-    //    catch (Exception ex)
-    //    {
-    //        throw ex;
-    //    }
-
-    //    finally
-    //    {
-    //        conn.Close();
-    //    }
-
-    //    return (obj == null);
-    //}
-
-    public void AddStudentToCourse(string studentCode, string courseTimeCode)
+       
+    public void AddStudentToCourse(string studentCode, string courseTimeCode) // פעולה המוסיפה את התלמיד לחוג שאליו הוא נרשם במתנ"ס
     {
         DataService d = new DataService();
         string query = "INSERT INTO StudentsInCourse (StudentCode, CourseTimeCode) VALUES ('" + studentCode + "','" + courseTimeCode + "')";
+        OleDbCommand comm = new OleDbCommand(query, conn);
+
+        try
+        {
+            conn.Open();
+            comm.ExecuteNonQuery();
+        }
+
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+
+        finally
+        {
+            conn.Close();
+        }
+    }
+
+    public void RemoveStudentFromCourse(int studentCode, int courseTimeCode) // פעולה שמוחקת את התלמיד מהחוג אליו הוא נרשם
+    {
+        DataService d = new DataService();
+        string query = "DELETE FROM StudentsInCourse WHERE StudentCode = " + studentCode  + "AND CourseTimeCode = " + courseTimeCode ;
         OleDbCommand comm = new OleDbCommand(query, conn);
 
         try
@@ -433,31 +406,7 @@ public class DataService
         }
 
         return courseCode;
-    }
-
-    //public void DeleteParticipantCourse(string participantCode, string courseName)
-    //{
-    //    DataService d = new DataService();
-    //    int courseCode = d.CourseCodeByCourseName(courseName);
-    //    string query = "DELETE StudentInCourses.CaseCode, StudentInCourses.StudentCode, ParticipantsInCourses.CourseCode FROM ParticipantsInCourses WHERE (ParticipantsInCourses.ParticipantCode = '" + participantCode + "' AND ParticipantsInCourses.CourseCode = '" + courseCode + "')";
-    //    OleDbCommand comm = new OleDbCommand(query, conn);
-
-    //    try
-    //    {
-    //        conn.Open();
-    //        comm.ExecuteNonQuery();
-    //    }
-
-    //    catch (Exception ex)
-    //    {
-    //        throw ex;
-    //    }
-
-    //    finally
-    //    {
-    //        conn.Close();
-    //    }
-    //}
+    }   
 
     public string CourseDescriptionByCourseName(string courseName)
     {
@@ -482,33 +431,7 @@ public class DataService
         }
 
         return courseDescription;
-    }
-
-    public int NumParticipants(string courseName)
-    {
-        string sql = "SELECT Count(StudentsInCourses.StudentCode) FROM ParticipantsInCourses INNER JOIN Courses ON ParticipantsInCourses.CourseCode = Courses.CourseCode WHERE (Courses.CourseName = '" + courseName + "')";
-        OleDbCommand comm = new OleDbCommand(sql, conn);
-        int numParticipants = 0;
-
-        try
-        {
-            conn.Open();
-            numParticipants = Convert.ToInt32(comm.ExecuteScalar());
-        }
-
-        catch (Exception ex)
-        {
-            throw ex;
-        }
-
-        finally
-        {
-            conn.Close();
-        }
-
-        return numParticipants;
-    }
-
+    }   
 
     public object ShowTable(string participantCode)
     {
@@ -551,31 +474,7 @@ public class DataService
         {
             conn.Close();
         }
-    }
-
-    public object ShowLoozeHours(string guideCode)
-    {
-        string sql = "SELECT Courses.Day, Courses.HourBegin, Courses.HourEnd, Rooms.NameCode, Participants.FirstName, Participants.LastName FROM(Participants INNER JOIN ParticipantsInCourses ON Participants.ParticipantCode = ParticipantsInCourses.ParticipantCode) INNER JOIN (Rooms INNER JOIN(CourcesInRooms INNER JOIN((GuidesInCourses INNER JOIN Guides ON GuidesInCourses.GuideCode = Guides.GuideCode) INNER JOIN Courses ON GuidesInCourses.CourseCode = Courses.CourseCode) ON CourcesInRooms.CourseCode = Courses.CourseCode) ON Rooms.RoomCode = CourcesInRooms.RoomCode) ON ParticipantsInCourses.CourseCode = Courses.CourseCode WHERE(Guides.GuideCode = '" + guideCode + "') ORDER BY Courses.Day";
-        OleDbCommand command = new OleDbCommand(sql, conn);
-        OleDbDataReader obj = null;
-
-        try
-        {
-            conn.Open();
-            obj = command.ExecuteReader();
-
-        }
-
-        catch (Exception exception)
-        {
-            throw exception;
-        }
-
-
-        return obj;
-
-    }
-
+    }    
 
     public object ShowMatnasLooze()
     {

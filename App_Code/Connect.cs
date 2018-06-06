@@ -7,7 +7,7 @@ using System.Data.OleDb;
 public class Connect
 {
     const string FILE_NAME = "Matnas_Database.accdb";
-    public static string GetConnectionString()
+    public static string GetConnectionString() // מחרוזת התחברות
     {
         string location = HttpContext.Current.Server.MapPath("~/App_Data/" + FILE_NAME);
         string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0; data source =" + location;
