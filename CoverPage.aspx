@@ -77,6 +77,7 @@
     </asp:Table>
  </center>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
+<asp:Content ID="Footer" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">  
+    <div id="Comercial" runat="server"></div> 
 </asp:Content>
 

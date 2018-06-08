@@ -43,5 +43,17 @@ public partial class CoverPage : System.Web.UI.Page
                     TimeTable.Rows[i].Cells[j].Text = s;
                 }
             }
-        }    
+
+        Comercial.Comercial comercialsService = new Comercial.Comercial();
+        Comercial.ComercialData data = comercialsService.GetComercial();
+
+        Image img = new Image();
+        img.ImageUrl = data.ImageURL;
+        img.AlternateText = data.ImageText;
+        img.Width = data.Width;
+        img.Height = data.Height;
+
+        Comercial.Controls.Add(img);
+        
+    }    
 }

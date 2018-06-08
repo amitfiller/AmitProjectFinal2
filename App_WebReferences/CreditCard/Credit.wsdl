@@ -65,10 +65,10 @@
   </wsdl:binding>
   <wsdl:service name="Credit">
     <wsdl:port name="CreditSoap" binding="tns:CreditSoap">
-      <soap:address location="http://localhost:49768/Credit.asmx" />
+      <soap:address location="http://localhost:54313/Credit.asmx" />
     </wsdl:port>
     <wsdl:port name="CreditSoap12" binding="tns:CreditSoap12">
-      <soap12:address location="http://localhost:49768/Credit.asmx" />
+      <soap12:address location="http://localhost:54313/Credit.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
