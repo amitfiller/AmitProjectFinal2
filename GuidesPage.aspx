@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:Label ID="Label1" runat="server" Text="Guide Active Courses"></asp:Label>
 
-    <asp:GridView ID="GridViewGuides" runat="server" OnPageIndexChanging="GridViewGuides_PageIndexChanging">
+    <asp:GridView ID="GridViewGuides" runat="server" OnPageIndexChanging="GridViewGuides_PageIndexChanging">        
     </asp:GridView>
 
 </asp:Content>

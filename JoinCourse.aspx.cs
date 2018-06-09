@@ -353,4 +353,5 @@ public partial class JoinCourse : System.Web.UI.Page
             MessageID.ForeColor = System.Drawing.Color.OrangeRed;
         }
     }
+    
 }

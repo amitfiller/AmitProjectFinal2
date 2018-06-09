@@ -37,23 +37,30 @@ public partial class CoverPage : System.Web.UI.Page
                     string s = "";
                     foreach (TimeTableRow day in daysPerHour)
                     {
-                        s += day.ToString() + "</BR>"; // Create ToString function!!!
+                        s += day.ToString() + "</BR>"; 
                     }
 
                     TimeTable.Rows[i].Cells[j].Text = s;
                 }
             }
 
-        Comercial.Comercial comercialsService = new Comercial.Comercial();
-        Comercial.ComercialData data = comercialsService.GetComercial();
+        try
+        {
+            Comercial.Comercial comercialsService = new Comercial.Comercial();
+            Comercial.ComercialData data = comercialsService.GetComercial();
 
-        Image img = new Image();
-        img.ImageUrl = data.ImageURL;
-        img.AlternateText = data.ImageText;
-        img.Width = data.Width;
-        img.Height = data.Height;
+            Image img = new Image();
+            img.ImageUrl = data.ImageURL;
+            img.AlternateText = data.ImageText;
+            img.Width = data.Width;
+            img.Height = data.Height;
 
-        Comercial.Controls.Add(img);
+            Comercial.Controls.Add(img);
+        }
+        catch (Exception)
+        {
+            
+        }
         
     }    
 }

@@ -8,7 +8,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
   
-        <asp:GridView ID="StudentCoursesGridView" runat="server" AllowPaging="True" OnPageIndexChanging="StudentCoursesGridView_PageIndexChanging" OnRowDeleting="StudentCoursesGridView_RowDeleting">
+        <asp:GridView ID="StudentCoursesGridView" runat="server" AllowPaging="True" PageSize="3" OnPageIndexChanging="StudentCoursesGridView_PageIndexChanging" OnRowDeleting="StudentCoursesGridView_RowDeleting">
             <Columns>
                 <asp:CommandField DeleteText="Leave Course" ShowDeleteButton="True" />
             </Columns>
@@ -16,6 +16,5 @@
    
     <br /><br />
     <asp:Button CssClass="menu_buttons" ID="JoinCourse" runat="server" OnClick="JoinCourse_Click" Text="Join" /> 
-    <asp:Button CssClass="menu_buttons" ID="Rank" runat="server" OnClick="Rank_Click" Text="Rank" />  
-</asp:Content>
+    </asp:Content>
 

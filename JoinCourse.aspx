@@ -56,7 +56,7 @@
 
     <div>
         <br />
-        <asp:GridView ID="AddedCoursesGridView" runat="server" AllowPaging="True" OnRowDeleting="AddedCoursesGridView_RowDeleting">
+        <asp:GridView ID="AddedCoursesGridView" runat="server" OnRowDeleting="AddedCoursesGridView_RowDeleting" AllowPaging="True" PageSize ="3" OnPageIndexChanging="AddedCoursesGridView_PageIndexChanging">
             <Columns>
                 <asp:CommandField DeleteText="Remove" ShowDeleteButton="True" />
             </Columns>

@@ -14,7 +14,7 @@ public partial class CoverPage : System.Web.UI.Page
 
     protected void SignUpParticipant_Click(object sender, EventArgs e)
     {
-        Server.Transfer("SignUpParticipants.aspx");
+        Server.Transfer("SignUpStudents.aspx");
     }
     protected void SignUpWorker_Click(object sender, EventArgs e)
     {

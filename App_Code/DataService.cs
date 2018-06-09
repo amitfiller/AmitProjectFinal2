@@ -29,6 +29,33 @@ public class DataService
         return reader;
     }
 
+    public bool IsCourseAlreadyExist(string courseName)
+    {
+        string query = "SELECT CourseCode FROM Courses WHERE CourseName='" + courseName + "'";
+        OleDbCommand comm = new OleDbCommand(query, conn);
+        object obj = null;
+
+        try
+        {
+            conn.Open();
+            obj = comm.ExecuteScalar();
+        }
+
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+
+        finally
+        {
+            conn.Close();
+        }
+
+        return (obj != null);
+
+    }
+
+
     public void AddCourse(string courseName, string price, string description, string roomType) // הוספת חוג למתנ"ס
     {
         string query = "INSERT INTO Courses (CourseName, PricePerMonth, Description, RoomType) VALUES('" + courseName + "', '" + price + "', '" + description + "', '" + roomType + "')";
@@ -118,6 +145,65 @@ public class DataService
         {
             conn.Close();
         }
+    }
+
+    public bool IsRoomFree(string RoomCode, string DayCode, string HourCode)
+    {
+        string year = DateTime.Now.Year.ToString();
+        string query = @"select CourseTimeCode FROM TimeTable 
+                         WHERE RoomCode=" + RoomCode +
+                         " AND Day=" + DayCode + " AND Hour=" + HourCode + " AND Year='" + year + "'";
+
+        OleDbCommand comm = new OleDbCommand(query, conn);
+        object obj = null;
+
+        try
+        {
+            conn.Open();
+            obj = comm.ExecuteScalar();
+        }
+
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+
+        finally
+        {
+            conn.Close();
+        }
+
+        return (obj != null);
+    }
+
+
+    public bool IsTimeTableAlreadySet(string GuideCourseCode, string DayCode, string HourCode)
+    {
+        string year = DateTime.Now.Year.ToString();
+        string query = @"select CourseTimeCode FROM TimeTable 
+                         WHERE GuideCourseCode =" + GuideCourseCode + 
+                         " AND Day=" + DayCode + " AND Hour=" + HourCode + " AND Year='" + year + "'";
+        
+        OleDbCommand comm = new OleDbCommand(query, conn);
+        object obj = null;
+
+        try
+        {
+            conn.Open();
+            obj = comm.ExecuteScalar();
+        }
+
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+
+        finally
+        {
+            conn.Close();
+        }
+
+        return (obj != null);
     }
 
     public void SetTimeTable(string GuideCourseCode, string RoomCode, string DayCode, string HourCode) // פעולה המעדכנת את מערכת השעות של המתנ"ס

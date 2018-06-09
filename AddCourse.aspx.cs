@@ -17,8 +17,18 @@ public partial class _Default : System.Web.UI.Page
         if (Page.IsValid == true)
         {
             DataService d = new DataService();
-            d.AddCourse(CourseName.Text , Price.Text, Description.Text, RoomType.SelectedItem.Value.ToString());
-            Server.Transfer("CoverPage.aspx");
+
+            if (!d.IsCourseAlreadyExist(CourseName.Text))
+            {
+                d.AddCourse(CourseName.Text, Price.Text, Description.Text, RoomType.SelectedItem.Value.ToString());
+                Server.Transfer("CoverPage.aspx");
+            }
+            else
+            {
+                message.Visible = true;
+                message.Text = "Course name already exist.";
+                message.ForeColor = System.Drawing.Color.OrangeRed;
+            }
         }
         else
         {
